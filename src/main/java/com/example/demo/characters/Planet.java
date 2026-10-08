@@ -1,0 +1,7 @@
+package com.example.demo.characters;
+
+public enum Planet {
+    TIMBER_HEARTH, ATTLEROCK, BRITTLE_HOLLOW, 
+    GIANTS_DEEP, DARK_BRAMBLE, ASH_TWIN, EMBER_TWIN,
+    QUANTUM_MOON, STRANGER
+}
