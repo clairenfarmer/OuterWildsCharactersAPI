@@ -1,4 +1,4 @@
-package com.example.demo.characters;
+package com.csc340.api.characters;
 
 public enum Planet {
     TIMBER_HEARTH, ATTLEROCK, BRITTLE_HOLLOW, 

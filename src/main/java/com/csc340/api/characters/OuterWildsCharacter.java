@@ -1,4 +1,4 @@
-package com.example.demo.characters;
+package com.csc340.api.characters;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
