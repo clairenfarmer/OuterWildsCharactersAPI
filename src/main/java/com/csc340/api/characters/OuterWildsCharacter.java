@@ -16,7 +16,7 @@ public class OuterWildsCharacter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CharacterId;
+    private Long characterId;
 
     @NotNull
     @NotBlank
@@ -33,4 +33,21 @@ public class OuterWildsCharacter {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Planet planet;
+
+    public Long getCharacterId() { return characterId; }
+    public void setCharacterId(Long characterId) { this.characterId = characterId; }
+  
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+  
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+  
+    public Species getSpecies() { return species; }
+    public void setSpecies(Species species) { this.species = species; }
+  
+    public Planet getPlanet() { return planet; }
+    public void setPlanet(Planet planet) { this.planet = planet; }
+
+
 }
