@@ -47,7 +47,8 @@ public class CharacterService {
           } else {
                 return repository.findAll();
           }
-
+    }
+   
     public OuterWildsCharacter findById(Long id) {
         return repository.findById(id).orElseThrow(() -> new CharacterNotFoundException(id));
     }

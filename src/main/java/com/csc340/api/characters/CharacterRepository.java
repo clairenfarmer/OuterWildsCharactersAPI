@@ -1,6 +1,8 @@
 package com.csc340.api.characters;
 
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 public interface CharacterRepository extends JpaRepository<OuterWildsCharacter, Long> {
 
     List<OuterWildsCharacter> findByNameContainingIgnoreCase(String name);
