@@ -20,4 +20,38 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/characters")
 public class CharacterController {
     
+    private final CharacterService service;
+    
+    public CharacterController(CharacterService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<OuterWildsCharacter> list(@RequestParam(required = false) String name,
+            @RequestParam(required = false) Species species,
+            @RequestParam(required = false) Planet planet) {
+        return service.search(name, species, planet);
+    }
+
+    @GetMapping("/{id}")
+    public OuterWildsCharacter get(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
+    @PostMapping 
+    @ResponseStatus(HttpStatus.CREATED)
+    public OuterWildsCharacter create(@Valid @RequestBody OuterWildsCharacter character) {
+        return service.create(character);
+    }
+
+    @PutMapping("/{id}")
+    public OuterWildsCharacter update(@PathVariable Long id, @Valid @RequestBody OuterWildsCharacter character) {
+        return service.update(id, character);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 }
