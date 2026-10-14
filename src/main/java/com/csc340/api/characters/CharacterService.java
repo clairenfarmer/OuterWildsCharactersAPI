@@ -58,8 +58,7 @@ public class CharacterService {
     }
 
     public OuterWildsCharacter update(Long id, OuterWildsCharacter updated) {
-        OuterWildsCharacter existing = repository.findById(id)
-                .orElseThrow(() -> new CharacterNotFoundException(id));
+        OuterWildsCharacter existing = repository.findById(id).orElseThrow(() -> new CharacterNotFoundException(id));
 
         existing.setName(updated.getName());
         existing.setDescription(updated.getDescription());
