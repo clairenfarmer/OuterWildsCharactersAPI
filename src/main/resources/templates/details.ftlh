@@ -24,10 +24,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    <a class="nav-link" href="details.html">Details</a>
-                    <a class="nav-link" href="about.html">About</a>
-                    <a class="nav-link" href="new-character-form.html">Add a Character</a>
+                    <a class="nav-link active" aria-current="page" href="index">Home</a>
+                    <a class="nav-link" href="details">Details</a>
+                    <a class="nav-link" href="about">About</a>
+                    <a class="nav-link" href="new-character-form">Add a Character</a>
                 </div>
             </div>
         </div>
@@ -49,10 +49,10 @@
                 <div class="card">
                     <h6 class="card-header">Quick Info</h6>
                     <div class="card-body">
-                        <h4 class="card-title">Feldspar</h4>
-                        <p class="lead fs-6">The best pilot of the Hearthian Travelers, now stranded in Dark Bramble.</p>
-                        <p><strong>Species:</strong> <span class="badge bg-success">Hearthian</span></p>
-                        <p><strong>Planet Found:</strong> Dark Bramble</p>
+                        <h4 class="card-title">${character.name}</h4>
+                        <p class="lead fs-6">${character.description}</p>
+                        <p><strong>Species: </strong> <span class="badge bg-success">${character.species}</span></p>
+                        <p><strong>Planet Found: </strong>${character.planet}</p>
                     </div>
                 </div>
             </div>
