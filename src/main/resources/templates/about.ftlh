@@ -1,8 +1,3 @@
-<!--
-About the website. This page can include anything you want about the purpose or creation of the site. Requirements:
-A) At least one image.
-B) A meaningful amount of text (e.g., why you chose your theme, your design choices, or a short bio)
--->
 <!DOCTYPE html>
 <html lang="en">
 
