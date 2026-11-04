@@ -28,9 +28,6 @@
                                 <a href="/" class="nav-link ${(active == 'home')?then('active', '')}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/details" class="nav-link ${(active == 'details')?then('active', '')}">Details</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/about" class="nav-link ${(active == 'about')?then('active', '')}">About</a>
                             </li>
                             <li class="nav-item">
