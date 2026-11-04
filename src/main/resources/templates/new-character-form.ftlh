@@ -7,7 +7,7 @@
 
 
         <h1 class="text-center mt-5" class="fw-bold">${heading!(isEdit?then('Edit Character', 'Add a New Character'))}</h1>
-        <p class="text-center">${lead!(isEdit?then('Update this character\u2019s details.', 'Share your favorite Outer Wilds character.'))}</p>
+        <p class="text-center">${lead!(isEdit?then('Update this character\'s details.', 'Share your favorite Outer Wilds character.'))}</p>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
