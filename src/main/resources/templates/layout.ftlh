@@ -5,19 +5,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${title} | Outer Wilds Character Gallery</title>
-        <link rel="stylesheet" href="/css/styles.css">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous">
     </head>
 
     <body>
+ 
         <header>
-            <a class="brand" href="/">Outer Wilds Character Gallery</a>
-            <nav>
-                <ul>
-                    <li><a href="/" class="${active == 'home'?then('active')}">Home</a></li>
-                    <li><a href="/details" class="${active == 'details'?then('active')}">Details</a></li>
-                    <li><a href="/about" class="${active == 'about'?then('active')}">About</a></li>
-                    <li><a href="/new-character-form" class="${active == 'new'?then('active')}">Add a Character</a></li>
-                </ul>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Outer Wilds Character Gallery</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link ${(active == 'home')?then('active', '')}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/details" class="nav-link ${(active == 'details')?then('active', '')}">Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/about" class="nav-link ${(active == 'about')?then('active', '')}">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/new-character-form" class="nav-link ${(active == 'new')?then('active', '')}">Add a Character</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -27,4 +48,9 @@
             </#if>
             <#nested>
         </main>
+        <!-- Bootstrap JS bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
     </body>
+</#macro>
