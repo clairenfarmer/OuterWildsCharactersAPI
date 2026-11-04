@@ -26,7 +26,14 @@
                 <div class="col-md-8">
                     <h2>About ${character.name}</h2>
                     <p class="lead fs-6">${character.description}</p>
-                    <a href="/" class="btn btn-outline-secondary">&larr; Back to gallery</a>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="/" class="btn btn-outline-secondary">&larr; Back to gallery</a>
+                        <a href="/characters/${character.characterId}/edit" class="btn btn-outline-primary">Edit</a>
+                        <form action="/characters/${character.characterId}/delete" method="POST"
+                            onsubmit="return confirm('Delete ${character.name}? This cannot be undone.');">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
