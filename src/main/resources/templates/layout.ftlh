@@ -31,7 +31,7 @@
                                 <a href="/about" class="nav-link ${(active == 'about')?then('active', '')}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/new-character-form" class="nav-link ${(active == 'new')?then('active', '')}">Add a Character</a>
+                                <a href="/characters/new" class="nav-link ${(active == 'new')?then('active', '')}">Add a Character</a>
                             </li>
                         </ul>
                     </div>

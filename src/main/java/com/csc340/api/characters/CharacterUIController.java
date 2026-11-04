@@ -1,9 +1,14 @@
 package com.csc340.api.characters;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -13,6 +18,12 @@ public class CharacterUIController {
 
     public CharacterUIController(CharacterService service) {
         this.service = service;
+    }
+
+    // Treat empty form fields as null so blank values don't fail enum binding
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     // Gallery: GET /  (optionally filtered by name and/or species)
@@ -29,8 +40,8 @@ public class CharacterUIController {
         return "index";
     }
 
-    // Details: GET /characters/{id}
-    @GetMapping("/characters/{id}")
+    // Details: GET /characters/{id}  (id must be numeric so /characters/new won't match here)
+    @GetMapping("/characters/{id:\\d+}")
     public String details(@PathVariable long id, Model model) {
         OuterWildsCharacter character = service.findById(id);
         model.addAttribute("character", character);
@@ -40,5 +51,20 @@ public class CharacterUIController {
     @GetMapping("/about")
     public String about() {
         return "about";
+    }
+
+    // Show the add-character form: GET /characters/new
+    @GetMapping("/characters/new")
+    public String newCharacterForm(Model model) {
+        model.addAttribute("allSpecies", Species.values());
+        model.addAttribute("allPlanets", Planet.values());
+        return "new-character-form";
+    }
+
+    // Receive the submitted form: POST /characters
+    @PostMapping("/characters")
+    public String createCharacter(@ModelAttribute OuterWildsCharacter character) {
+        service.create(character);
+        return "redirect:/";
     }
 }

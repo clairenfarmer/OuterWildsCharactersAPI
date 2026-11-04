@@ -30,7 +30,7 @@
                     <h2>About the Style</h2>
                     <p>The gallery is organized by character species, each given a color. Green represents the
                         Hearthians,
-                        yellow represents the Nomai, and red represents the Owlk.
+                        yellow represents the Nomai, and red represents the Strangers.
                         The green NavBar is also a nod to Timber Hearth, the home planet of the Hearthians.
                     </p>
 
