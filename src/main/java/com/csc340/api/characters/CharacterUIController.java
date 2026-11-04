@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CharacterUIController {
@@ -78,5 +79,15 @@ public class CharacterUIController {
         model.addAttribute("allPlanets", Planet.values());
         model.addAttribute("formAction", "/characters/" + id);
         return "new-character-form";
+    }
+
+    // Receive the edit submission: POST /characters/{id}
+    @PostMapping("/characters/{id:\\d+}")
+    public String updateCharacter(@PathVariable Long id,
+            @ModelAttribute OuterWildsCharacter character,
+            RedirectAttributes redirectAttributes) {
+        OuterWildsCharacter updated = service.update(id, character); // 404 if missing
+        redirectAttributes.addFlashAttribute("message", updated.getName() + " was updated successfully.");
+        return "redirect:/characters/" + id;
     }
 }
