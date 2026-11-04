@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CharacterUIController {
@@ -14,10 +15,17 @@ public class CharacterUIController {
         this.service = service;
     }
 
-    // Gallery: GET /
+    // Gallery: GET /  (optionally filtered by name and/or species)
     @GetMapping("/")
-    public String gallery(Model model) {
-        model.addAttribute("characters", service.findAll());
+    public String gallery(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Species species,
+            Model model) {
+        model.addAttribute("characters", service.search(name, species, null));
+        // Keep the typed/selected values in the form after searching
+        model.addAttribute("name", name);
+        model.addAttribute("species", species);
+        model.addAttribute("allSpecies", Species.values());
         return "index";
     }
 

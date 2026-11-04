@@ -11,12 +11,23 @@
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <hr>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Search characters..."
-                                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-secondary" type="button"
-                                        id="button-addon2">Submit</button>
-                                </div>
+                                <form method="get" action="/">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="name" class="form-control"
+                                            placeholder="Search characters..."
+                                            value="${(name)!''}"
+                                            aria-label="Character name">
+                                        <select name="species" class="form-select" aria-label="Filter by species">
+                                            <option value="">All species</option>
+                                            <#list allSpecies as s>
+                                                <option value="${s?string}"<#if (species)?? && species?string == s?string> selected</#if>>${s?string}</option>
+                                            </#list>
+                                        </select>
+                                        <button class="btn btn-outline-secondary" type="submit"
+                                            id="button-addon2">Search</button>
+                                        <a href="/" class="btn btn-outline-secondary">Clear</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
