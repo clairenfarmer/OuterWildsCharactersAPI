@@ -90,4 +90,13 @@ public class CharacterUIController {
         redirectAttributes.addFlashAttribute("message", updated.getName() + " was updated successfully.");
         return "redirect:/characters/" + id;
     }
+
+    // Delete: POST /characters/{id}/delete
+    @PostMapping("/characters/{id:\\d+}/delete")
+    public String deleteCharacter(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        OuterWildsCharacter character = service.findById(id); // 404 if missing
+        service.delete(id);
+        redirectAttributes.addFlashAttribute("message", character.getName() + " was deleted.");
+        return "redirect:/";
+    }
 }
