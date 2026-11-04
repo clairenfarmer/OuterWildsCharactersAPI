@@ -24,87 +24,20 @@
 
                     <!-- Character Cards -->
                     <div class="row g-4 justify-content-md-center">
-                        <div class="col-12 col-md-4">
-                            <div class="card h-100">
-                                <img src="Assets\Chert.avif" class="card-img-top" alt="Chert from outer wilds">
-                                <div class="card-body">
-                                    <h5 class="card-title">Chert</h5>
-                                    <p class="card-text">Chert is a Outer Wilds Venture Member on the planet Ember Twin.
-                                        They are an
-                                        enthusiastic
-                                        astronomer and their instrument of choice is drums.</p>
-                                    <h6>Species: <span class="badge bg-success">Hearthian</span></h6>
-                                    <a href="#" class="btn btn-outline-success">View details</a>
+                        <#list characters as character>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${character.name}</h5>
+                                        <p class="card-text">${character.description}</p>
+                                        <h6>Species: <span class="badge bg-success">${character.species}</span></h6>
+                                        <a href="/characters/${character.characterId}" class="btn btn-outline-success">View details</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card h-100">
-                                <img src="Assets\Feldspar.avif" class="card-img-top" alt="Feldspar from outer wilds">
-                                <div class="card-body">
-                                    <h5 class="card-title">Feldspar</h5>
-                                    <p class="card-text">Feldspar is a Outer Wilds Venture Member on the planet Dark
-                                        Bramble. They are
-                                        known as
-                                        fearless and an incredible pilot and their instrument of choice is harmonica.
-                                    </p>
-                                    <h6>Species: <span class="badge bg-success">Hearthian</span></h6>
-                                    <a href="details.html" class="btn btn-outline-success">View details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card h-100">
-                                <img src="Assets\Solanum.avif" class="card-img-top" alt="Solanum from outer wilds">
-                                <div class="card-body">
-                                    <h5 class="card-title">Solanum</h5>
-                                    <p class="card-text">Solanum is the last nomai in the solar system and found on the
-                                        Quantum Moon.
-                                        Solanum uses her
-                                        communication device to play piano-like music.</p>
-                                    <h6>Species: <span class="badge bg-warning">Nomai</span></h6>
-                                    <a href="#" class="btn btn-outline-warning">View details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card h-100">
-                                <img src="Assets\Pye_Corpse.avif" class="card-img-top" alt="Pye from outer wilds">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pye</h5>
-                                    <p class="card-text">Pye was a Nomai from Ember Twin who worked on the Ash Twin
-                                        project
-                                        at the High
-                                        Energy Lab and
-                                        Sun Station. Pye confirmed many important Nomai discoveries including the
-                                        negative
-                                        time interval
-                                        from black hole
-                                        travel.</p>
-                                    <h6>Species: <span class="badge bg-warning">Nomai</span></h6>
-                                    <a href="#" class="btn btn-outline-warning">View details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="card h-100">
-                                <img src="Assets\Prisoner.avif" class="card-img-top" alt="Prisoner from outer wilds">
-                                <div class="card-body">
-                                    <h5 class="card-title">Prisoner</h5>
-                                    <p class="card-text">The Prisoner was an inhabitant of the stranger who was sealed
-                                        in a
-                                        vault.
-                                        By this separation,
-                                        the Prisoner 'outlived' their species through a simulation while the rest of
-                                        their
-                                        kind's
-                                        simulation was
-                                        destroyed.</p>
-                                    <h6>Species: <span class="badge bg-danger">Nomai</span></h6>
-                                    <a href="#" class="btn btn-outline-danger">View details</a>
-                                </div>
-                            </div>
-                        </div>
+                        <#else>
+                            <p class="text-center">No characters found.</p>
+                        </#list>
                     </div>
                 </div>
             </div>
