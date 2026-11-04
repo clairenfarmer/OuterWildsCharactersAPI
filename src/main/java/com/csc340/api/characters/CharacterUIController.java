@@ -58,6 +58,7 @@ public class CharacterUIController {
     public String newCharacterForm(Model model) {
         model.addAttribute("allSpecies", Species.values());
         model.addAttribute("allPlanets", Planet.values());
+        model.addAttribute("formAction", "/characters");
         return "new-character-form";
     }
 
@@ -66,5 +67,16 @@ public class CharacterUIController {
     public String createCharacter(@ModelAttribute OuterWildsCharacter character) {
         service.create(character);
         return "redirect:/";
+    }
+
+    // Show the edit form pre-filled: GET /characters/{id}/edit
+    @GetMapping("/characters/{id:\\d+}/edit")
+    public String editCharacterForm(@PathVariable Long id, Model model) {
+        OuterWildsCharacter character = service.findById(id); // 404 if missing
+        model.addAttribute("character", character);
+        model.addAttribute("allSpecies", Species.values());
+        model.addAttribute("allPlanets", Planet.values());
+        model.addAttribute("formAction", "/characters/" + id);
+        return "new-character-form";
     }
 }
