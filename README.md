@@ -1,6 +1,7 @@
 # Outer Wilds Characters API
 
 A REST API for characters from the video game Outer Wilds, built with Spring Boot using a layered architecture. Data is stored in PostgreSQL (Neon).
+Included is a server-rendered MVC web interface for managing characters in a browser. the web interface and JSON API share the same service, repository, and database.
 
 ## Features
 
@@ -53,6 +54,21 @@ src/main/java/com/csc340/api/characters
 src/main/resources/
   application.properties
 ```
+
+### MVC Web Interface
+Start the application and open `http://localhost:8080/` to use the browser interface.
+
+| Method | Path | Handler | What it does |
+  |--------|------|---------|--------------|
+  | GET | `/` | `gallery` | Home/gallery page; optional `?name=` and `?species=` filters → renders `index` |
+  | GET | `/characters/{id}` | `details` | Character details page (id must be numeric) → renders `details` |
+  | GET | `/about` | `about` | About page → renders `about` |
+  | GET | `/characters/new` | `newCharacterForm` | Blank add-character form → renders `new-character-form` |
+  | POST | `/characters` | `createCharacter` | Submits the new character, then redirects to `/` |
+  | GET | `/characters/{id}/edit` | `editCharacterForm` | Pre-filled edit form → renders `new-character-form` |
+  | POST | `/characters/{id}` | `updateCharacter` | Saves edits, then redirects to `/characters/{id}` |
+  | POST | `/characters/{id}/delete` | `deleteCharacter` | Deletes the character, then redirects to `/` |
+
 
 ## Data Model
 
