@@ -1,15 +1,18 @@
 package com.csc340.api.characters;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -98,5 +101,14 @@ public class CharacterUIController {
         service.delete(id);
         redirectAttributes.addFlashAttribute("message", character.getName() + " was deleted.");
         return "redirect:/";
+    }
+
+    // Render a friendly 404 page when a character doesn't exist (UI pages only;
+    // the REST API in CharacterController still returns its default JSON 404).
+    @ExceptionHandler(CharacterNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleCharacterNotFound(CharacterNotFoundException ex, Model model) {
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "character-not-found";
     }
 }

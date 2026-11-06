@@ -36,7 +36,7 @@
 
                 </div>
                 <div class="col-md-3">
-                    <img src="src\main\resources\static\Sun_Supernova.webp" class="img-thumbnail" alt="Sun Supernova from Outer Wilds">
+                    <img src="/Sun_Supernova.webp" class="img-thumbnail" alt="Sun Supernova from Outer Wilds">
                     <div class="card">
                         <div class="card-header">
                             Quote
